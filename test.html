@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Page</title>
+<style>
+*{margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif;}
+body{background:#fff; color:#222;}
+
+/* NAVBAR */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  background:#fff;
+  border-bottom:1px solid #ccc;
+}
+.nav-left{display:flex; align-items:center; gap:10px;}
+.nav-right{display:flex; align-items:center;}
+.hamburger{font-size:28px; cursor:pointer;}
+.logo{font-weight:600; font-size:24px;}
+.nav-right .cart-btn{font-size:24px; cursor:pointer;}
+
+/* LIVE PRICE */
+.live-price{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin:20px 0;
+  font-size:20px;
+  font-weight:600;
+  color:#caa14d;
+}
+
+/* PRODUCT CARD */
+.product-card{
+  width:160px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  text-align:center;
+  margin:0 auto;
+  padding:10px;
+}
+.product-card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
+.product-card h4{margin:8px 0 5px; font-size:16px; color:#caa14d;}
+.product-card p{font-size:14px; margin-bottom:8px;}
+.product-card button{
+  padding:8px 15px;
+  background:#caa14d;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="nav-left">
+    <div class="hamburger">&#9776;</div>
+    <div class="logo">Jaiswal Jewelry</div>
+  </div>
+  <div class="nav-right">
+    <div class="cart-btn">🛒</div>
+  </div>
+</header>
+
+<section class="live-price">
+  <div id="gold-price">Gold: NPR 0</div>
+  <div id="silver-price">Silver: NPR 0</div>
+</section>
+
+<section class="featured-products">
+  <div class="product-card">
+    <img src="images/ring.PNG" alt="Diamond Ring">
+    <h4>Diamond Ring</h4>
+    <p>NPR 45,000</p>
+    <button>Add to Cart</button>
+  </div>
+</section>
+
+<script>
+const goldEl = document.getElementById('gold-price');
+const silverEl = document.getElementById('silver-price');
+
+// Dummy live price for testing
+goldEl.textContent = "Gold: NPR 85,000";
+silverEl.textContent = "Silver: NPR 70,000";
+</script>
+
+</body>
+</html>
