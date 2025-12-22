@@ -2005,6 +2005,7 @@ ul {
   border-bottom: 0;
   padding-bottom: 0;
   margin-bottom: 70px;
+  background-color: #000;
 }
 
 .newsletter_black h2 {
@@ -2027,34 +2028,49 @@ ul {
 }
 
 /* 🌟 FORM DESIGN */
-.newsletter_black .newsletter_content form {
+.footer-newsletter {
   display: flex;
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
   gap: 10px;
   box-sizing: border-box;
+  position: relative;
 }
 
-/* ✉️ INPUT */
-.newsletter_black .newsletter_content form input {
+/* Input wrapper for icon */
+.input-wrapper {
+  position: relative;
   flex: 1;
-  min-width: 0;
-  border: 2px solid #2d2d2d;
-  font-size: 14px;
-  color: #fff;
-  padding: 14px 18px;
+}
+
+.input-wrapper .email-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #a8741a;
+  pointer-events: none;
+}
+
+.footer-newsletter input {
+  width: 100%;
+  padding: 14px 18px 14px 45px; /* space for icon */
+  border: 2px solid #a8741a;
   border-radius: 6px;
-  background: transparent;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
   outline: none;
 }
 
-.newsletter_black .newsletter_content form input::placeholder {
+.footer-newsletter input::placeholder {
   color: #777;
 }
 
-/* 🔘 BUTTON */
-.newsletter_black .newsletter_content form button {
+/* Button with hover sparkle effect */
+.footer-newsletter button {
   font-family: "Poppins", serif;
   font-size: 15px;
   font-weight: 500;
@@ -2066,12 +2082,45 @@ ul {
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
 
-.newsletter_black .newsletter_content form button:hover {
-  background: linear-gradient(135deg, #d4af37, #a8741a);
+.footer-newsletter button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255,255,255,0.2);
+  transform: rotate(45deg) translateX(-100%);
+  transition: all 0.5s ease;
+}
+
+.footer-newsletter button:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+.footer-newsletter button:hover {
   color: #000;
   transform: translateY(-2px);
+}
+
+/* Success message */
+.success-msg {
+  display: none;
+  color: #a8741a;
+  margin-top: 12px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 576px) {
+  .newsletter_black h2 { font-size: 26px; }
+  .footer-newsletter { flex-direction: column; }
+  .footer-newsletter button { width: 100%; padding: 14px 0; }
 }
 
 /* ****************banner section ************** */
@@ -2552,19 +2601,4 @@ p {
 
 .navbar ul li {
     margin: 0 15px;
-}
-
-@media (max-width: 576px) {
-  .newsletter_black h2 {
-    font-size: 26px;
-  }
-
-  .newsletter_black .newsletter_content form {
-    flex-direction: column;
-  }
-
-  .newsletter_black .newsletter_content form button {
-    width: 100%;
-    padding: 14px 0;
-  }
 }
