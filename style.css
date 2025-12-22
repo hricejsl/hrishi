@@ -2501,3 +2501,48 @@ p {
   background: #a8741a;
   color: #fff;
 }
+
+/* Navbar Container */
+.navbar {
+    position: relative;       /* Sticky OFF, normal flow */
+    top: auto;                /* Remove sticky top */
+    width: 100%;
+    background-color: #000;   /* Navbar color */
+    z-index: 1;               /* Safe layering */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Navbar logo */
+.logo img {
+    width: 220px;       /* Desktop default logo width */
+    max-width: 250px;   /* Maximum desktop width */
+    height: auto;
+    display: block;
+}
+
+/* Responsive Logo for Tablets */
+@media screen and (max-width: 768px) {
+    .logo img {
+        width: 150px;   /* Tablet / small screens */
+    }
+}
+
+/* Responsive Logo for Mobile */
+@media screen and (max-width: 480px) {
+    .logo img {
+        width: 120px;   /* Mobile screens */
+    }
+}
+
+/* Navbar menu items */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin-left: auto;  /* Logo left, menu right */
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
