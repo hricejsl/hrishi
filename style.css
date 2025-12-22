@@ -2493,3 +2493,34 @@ p {
   background: #a8741a;
   color: #fff;
 }
+
+/* ********** Header Top Social Icons Stylish Glow ********** */
+.header_top .social_icone ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.header_top .social_icone ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.header_top .social_icone ul li a:hover {
+    color: #a8741a;
+    background: rgba(168,116,26,0.2);
+    box-shadow: 0 0 15px rgba(168,116,26,0.8);
+    transform: scale(1.2);
+}
