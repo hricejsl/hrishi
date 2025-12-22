@@ -1994,8 +1994,7 @@ ul {
   display: block;
   margin-top: 10px;
 }
-
-/* ***********************subscribe *********** */
+/* *********************** subscribe *********** */
 .newsletter_area {
   border-bottom: 1px solid #ebebeb;
   padding-bottom: 70px;
@@ -2014,57 +2013,65 @@ ul {
   font-weight: 700;
   font-size: 35px;
   letter-spacing: 2px;
-  line-height: 32px;
+  margin-bottom: 15px;
 }
+
 .newsletter_black p {
   color: #a0a0a0;
   line-height: 26px;
-  margin-bottom: 37px;
-}
-.newsletter_black .newsletter_content form {
-  width: inherit;
-  position: unset;
-  display: flex;
-  justify-content: center;
-  width: 600px;
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 
-.newsletter_black .newsletter_content form input {
-  width: 100%;
-  border: 2px solid #2d2d2d;
-  font-size: 12px;
-  color: #fff;
-  padding: 0 20px;
-  border-radius: 4px;
-  padding: 10px 224px 10px 20px;
-  background: none;
-}
-.newsletter_black .newsletter_content form button {
-  position: absolute;
-  font-family: "Poppins", serif;
-  content: "";
-  right: 0;
-  top: 0;
-  font-size: 16px;
-  font-weight: 500;
+.newsletter_content {
   text-align: center;
-  padding: 0 60px;
-  background: #a8741a;
+}
+
+/* 🌟 FORM DESIGN */
+.newsletter_black .newsletter_content form {
+  display: flex;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+/* ✉️ INPUT */
+.newsletter_black .newsletter_content form input {
+  flex: 1;
+  min-width: 0;
+  border: 2px solid #2d2d2d;
+  font-size: 14px;
   color: #fff;
-  height: 100%;
-  border: 0;
-  border-radius: 4px;
-  text-transform: capitalize;
+  padding: 14px 18px;
+  border-radius: 6px;
+  background: transparent;
+  outline: none;
+}
+
+.newsletter_black .newsletter_content form input::placeholder {
+  color: #777;
+}
+
+/* 🔘 BUTTON */
+.newsletter_black .newsletter_content form button {
+  font-family: "Poppins", serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0 32px;
+  background: linear-gradient(135deg, #a8741a, #d4af37);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .newsletter_black .newsletter_content form button:hover {
+  background: linear-gradient(135deg, #d4af37, #a8741a);
   color: #000;
-}
-.newsletter_content {
-  text-align: center;
+  transform: translateY(-2px);
 }
 
 /* ****************banner section ************** */
@@ -2545,4 +2552,19 @@ p {
 
 .navbar ul li {
     margin: 0 15px;
+}
+
+@media (max-width: 576px) {
+  .newsletter_black h2 {
+    font-size: 26px;
+  }
+
+  .newsletter_black .newsletter_content form {
+    flex-direction: column;
+  }
+
+  .newsletter_black .newsletter_content form button {
+    width: 100%;
+    padding: 14px 0;
+  }
 }
