@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
@@ -86,16 +86,29 @@
     </div>
 </div>
 
-<!-- Dynamic Cart Popup (inside header for simplicity) -->
-<div class="cart_popup" id="cartPopup" style="display: none;">
+<!-- Dynamic Cart Popup -->
+<div class="cart_popup" id="cartPopup">
     <div class="cart_popup_header">
         <h3>Shopping Cart</h3>
         <button id="closeCart">X</button>
     </div>
+
     <div class="cart_items" id="cartItems">
-        <!-- Products will be added dynamically via cart.js -->
+        <!-- If cart is empty, show this -->
+        <div class="empty_cart" id="emptyCartMessage">
+            <p>Your cart is empty</p>
+            <p>Nothing in here. Only possibilities!</p>
+            <a href="#" class="shop_deals">Shop today’s deals</a>
+            <div class="cart_actions">
+                <button class="sign_in">Sign in</button>
+                <button class="sign_up">Sign up</button>
+                <button class="continue_shopping">Continue Shopping 🛍️</button>
+            </div>
+        </div>
+        <!-- Products will be dynamically added here -->
     </div>
-    <div class="cart_popup_footer">
+
+    <div class="cart_popup_footer" id="cartFooter">
         <div class="cart_total">
             Subtotal: Rs. <span id="cartSubtotal">0</span>
         </div>
