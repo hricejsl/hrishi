@@ -2501,3 +2501,37 @@ p {
   background: #a8741a;
   color: #fff;
 }
+
+.cart_popup {
+    display: none; /* hide initially */
+    position: absolute; /* relative to header or fixed if you want */
+    top: 60px; /* adjust according to your header height */
+    right: 20px; /* adjust to align with cart icon */
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.cart_popup_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #a8741a;
+    color: #fff;
+    font-weight: 600;
+}
+
+.cart_popup_footer {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.cart_items {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
