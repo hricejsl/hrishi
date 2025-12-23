@@ -1,150 +1,382 @@
+/* ===================== IMPORT FONTS ===================== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap");
 
-/* common styling */
-* {
+/* ===================== RESET & BASE ===================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-*, *::after, *::before { box-sizing: border-box; }
 
 html, body {
   height: 100%;
-  overflow-x: hidden; /* horizontal scroll fix */
-}
-body {
-  line-height: 24px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  visibility: visible;
   font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
   color: #5a5a5a;
+  overflow-x: hidden; /* Fix horizontal scroll */
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-weight: 400;
-  margin-top: 0;
+h1, h2, h3, h4, h5, h6 {
   font-family: "Baloo 2", cursive;
+  margin-top: 0;
+  font-weight: 400;
 }
-h1 { font-size: 48px; line-height: 1; font-weight: 700; }
-h2 { font-size: 36px; line-height: 36px; }
-h3 { font-size: 30px; line-height: 30px; }
-h4 { font-size: 16px; line-height: 19px; font-weight: 700; }
-h5 { font-size: 14px; line-height: 18px; }
-h6 { font-size: 12px; line-height: 14px; }
 
-p:last-child { margin-bottom: 0; }
-a, button { color: inherit; line-height: inherit; text-decoration: none; cursor: pointer; }
-.btn:focus { box-shadow: none; }
-a, button, img, input, span { transition: all 0.3s ease 0s; }
-*:focus { outline: none !important; }
-a:focus { color: inherit; outline: none; text-decoration: none; }
-a:hover { text-decoration: none; }
-button, input[type="submit"] { cursor: pointer; }
-img { max-width: 100%; height: auto; }
-ul { list-style: outside none none; margin: 0; padding: 0; }
-
-/* header, top bar, middle header, sticky, cart etc */
-/* ============================ */
-/* All your previous header, cart, sticky, search, wishlist CSS comes here exactly as before */
-/* ============================ */
-
-/* **********Slider Section *************** */
-/* Your previous slider CSS stays here, no change */
-
-/* **********Banner Section *************** */
-.banner_section {
-  border-bottom: 1px solid #ebebeb;
-  margin-bottom: 70px;
+a, button {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.banner_black {
-  border-bottom: 1px solid #2d2d2d;
-}
-.banner_black .banner_content {
-  transition: 0.5s;
-  bottom: 25px;
-  top: inherit;
-}
-.banner_black .banner_content p { color: #ffffff; margin-bottom: 10px; }
-.banner_black .banner_content h2 { color: #a8741a; font-weight: 400; font-family: "Baloo 2", serif; }
-.banner_black .banner_content span { color: #fff; }
-.banner_black .banner_thumb:hover .banner_content { transform: scale(1.1); }
-.banner_thumb { position: relative; overflow: hidden; }
-.banner_thumb img { transition: 0.3s; }
-.banner_thumb:hover img { transform: scale(1.1); }
-.banner_content { position: absolute; top: 25px; left: 25px; }
 
-/* New full-width banner for main page */
-.banner_fullwidth {
-  background: url('images/banner/banner2222.jpg') no-repeat center center;
-  background-size: cover;
-  margin-bottom: 64px;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
-.banner_fullwidth .row { height: 510px; }
-.black_fullwidth .banner_text { text-align: center; cursor: pointer; transition: 0.3s; }
-.black_fullwidth .banner_text p { color: #a8741a; }
-.black_fullwidth .banner_text h2 { color: #fff; font-family: serif; font-weight: 400; }
-.black_fullwidth .banner_text span { color: #a0a0a0; }
-.black_fullwidth .banner_text a { color: #a8741a; border: 2px solid #a8741a; padding: 0 45px; line-height: 46px; border-radius: 3px; display: inline-block; margin-top: 70px; font-weight: 500; font-size: 13px; text-transform: uppercase; }
-.black_fullwidth .banner_text a:hover { color: #fff; background: #a8741a; }
 
-/* **********Subscribe Section *************** */
-.newsletter_area { border-bottom: 1px solid #ebebeb; padding-bottom: 70px; margin-bottom: 65px; }
-.newsletter_black { border-bottom: 0; padding-bottom: 0; margin-bottom: 70px; text-align: center; }
-.newsletter_black h2 { color: #ffffff; font-family: serif; font-weight: 700; font-size: 35px; letter-spacing: 2px; line-height: 32px; }
-.newsletter_black p { color: #a0a0a0; line-height: 26px; margin-bottom: 37px; }
-.newsletter_black .newsletter_content form {
+ul {
+  list-style: none;
+}
+
+button:focus,
+a:focus {
+  outline: none !important;
+}
+
+/* ===================== HEADER ===================== */
+.header {
   width: 100%;
-  max-width: 600px;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
   position: relative;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #242424;
 }
-.newsletter_black .newsletter_content form input {
-  width: 100%;
-  border: 2px solid #2d2d2d;
-  font-size: 12px;
+
+.logo img {
+  max-width: 150px;
+}
+
+.nav_menu {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav_menu a {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
   color: #fff;
-  padding: 10px 20px 10px 20px;
-  border-radius: 4px;
-  background: none;
 }
-.newsletter_black .newsletter_content form button {
-  position: absolute;
-  right: 0;
+
+.nav_menu a:hover {
+  color: #a8741a;
+}
+
+.cart_icon {
+  position: relative;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cart_icon:hover {
+  color: #a8741a;
+}
+
+/* ===================== CART POPUP ===================== */
+.cart_popup_overlay {
+  position: fixed;
   top: 0;
+  right: 0;
+  width: 400px;
+  max-width: 95%;
+  height: 100%;
+  background: #1f1f1f;
+  box-shadow: -2px 0 15px rgba(0,0,0,0.5);
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 2000;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.cart_popup_overlay.active {
+  transform: translateX(0);
+}
+
+.cart_popup_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart_popup_header h3 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.cart_popup_header .close_cart {
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cart_item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.cart_item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cart_item_info {
+  flex: 1;
+  margin-left: 15px;
+  color: #fff;
+}
+
+.cart_item_info h4 {
   font-size: 16px;
   font-weight: 500;
-  padding: 0 60px;
-  height: 100%;
-  border-radius: 4px;
-  border: 0;
+  margin-bottom: 5px;
+}
+
+.cart_item_info span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #a8741a;
+}
+
+.cart_item_quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart_item_quantity button {
   background: #a8741a;
   color: #fff;
-}
-.newsletter_black .newsletter_content form button:hover { background: #212121; }
-
-/* ********** Product Section *************** */
-/* Your previous product section CSS stays here */
-
-/* ********** Mobile + Desktop responsive fix *************** */
-@media only screen and (max-width: 1200px) {
-  .slider_area .single_slider .row { height: auto; }
-  .banner_fullwidth .row { height: auto; }
-  .newsletter_black h2 { font-size: 28px; line-height: 36px; }
-  .newsletter_black .newsletter_content form { max-width: 90%; }
-  .product_tab_button ul li a { font-size: 16px; padding: 0 20px; }
-}
-@media only screen and (max-width: 768px) {
-  .slider_area .single_slider .row { height: 400px; }
-  .banner_fullwidth .row { height: 400px; }
-  .newsletter_black h2 { font-size: 24px; line-height: 32px; }
-  .newsletter_black .newsletter_content form input { padding: 10px 15px; }
-  .newsletter_black .newsletter_content form button { padding: 0 40px; }
-  .product_tab_button ul li a { font-size: 14px; padding: 0 15px; }
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 700;
 }
 
-/* ********** Extra safe tweaks *************** */
-img { max-width: 100%; height: auto; }
-.container, .row { max-width: 100%; overflow-x: hidden; }
+.cart_item_quantity span {
+  font-size: 14px;
+  color: #fff;
+}
+
+.remove_item {
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.remove_item:hover {
+  color: #a8741a;
+}
+
+/* ===================== CART TOTAL ===================== */
+.cart_total_section {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+}
+
+.cart_total_section h4 {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.cart_total_section .total_row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.cart_total_section .total_row span {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===================== CART BUTTONS ===================== */
+.cart_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart_buttons a {
+  text-align: center;
+  padding: 12px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #a8741a, 0 0 20px #a8741a inset;
+  color: #fff;
+  background: #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+.cart_buttons a:hover {
+  background: #a8741a;
+  color: #000;
+  box-shadow: 0 0 20px #fff, 0 0 25px #a8741a inset;
+}
+
+/* ===================== BANNER ===================== */
+.banner_section {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 70px;
+}
+
+.banner_section img {
+  width: 100%;
+  display: block;
+}
+
+.banner_content {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  color: #fff;
+  text-align: left;
+}
+
+.banner_content h2 {
+  font-size: 50px;
+  font-weight: 700;
+  color: #a8741a;
+  margin-bottom: 15px;
+}
+
+.banner_content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.banner_content a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: #a8741a;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #a8741a, 0 0 20px #fff inset;
+}
+
+.banner_content a:hover {
+  background: #fff;
+  color: #a8741a;
+}
+
+/* ===================== SUBSCRIBE ===================== */
+.newsletter_area {
+  background: #242424;
+  padding: 70px 20px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.newsletter_area h2 {
+  font-size: 35px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.newsletter_area p {
+  color: #a0a0a0;
+  margin-bottom: 25px;
+}
+
+.newsletter_area form {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter_area form input {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 5px 0 0 5px;
+  border: 2px solid #a8741a;
+  background: none;
+  color: #fff;
+}
+
+.newsletter_area form button {
+  padding: 12px 25px;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background: #a8741a;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter_area form button:hover {
+  background: #fff;
+  color: #a8741a;
+  box-shadow: 0 0 15px #a8741a, 0 0 25px #fff inset;
+}
+
+/* ===================== MEDIA QUERIES ===================== */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .banner_content h2 {
+    font-size: 36px;
+  }
+
+  .banner_content p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart_popup_overlay {
+    width: 100%;
+  }
+
+  .banner_content h2 {
+    font-size: 28px;
+  }
+
+  .banner_content p {
+    font-size: 14px;
+  }
+}
