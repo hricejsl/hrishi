@@ -1,19 +1,20 @@
-// Cart Elements
-const openCart = document.getElementById("openCart");
+// ======= Cart JS =======
+
 const cartPopup = document.getElementById("cartPopup");
+const openCart = document.getElementById("openCart");
 const closeCart = document.getElementById("closeCart");
 const cartItemsContainer = document.getElementById("cartItems");
-const cartSubtotalEl = document.getElementById("cartSubtotal");
+const cartSubtotal = document.getElementById("cartSubtotal");
 const clearCartBtn = document.getElementById("clearCart");
 const checkoutBtn = document.getElementById("checkoutBtn");
+const emptyCartMessage = document.getElementById("emptyCartMessage");
 
-// Cart data
 let cart = [];
 
-// Toggle cart popup
-openCart.addEventListener("click", function (e) {
-    e.preventDefault();
-    cartPopup.style.display = cartPopup.style.display === "block" ? "none" : "block";
+// Show cart popup
+openCart.addEventListener("click", () => {
+    cartPopup.style.display = "block";
+    renderCart();
 });
 
 // Close cart popup
@@ -21,72 +22,75 @@ closeCart.addEventListener("click", () => {
     cartPopup.style.display = "none";
 });
 
-// Add item to cart
+// Add product to cart (example function, you call this when user clicks "Add to Cart")
 function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-        existing.quantity += 1;
+    if(existing){
+        existing.qty += 1;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        product.qty = 1;
+        cart.push(product);
     }
-    updateCartUI();
+    renderCart();
 }
 
-// Remove item from cart
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    updateCartUI();
+// Remove product
+function removeFromCart(id){
+    cart = cart.filter(item => item.id !== id);
+    renderCart();
 }
 
-// Clear cart
+// Change quantity
+function changeQty(id, delta){
+    const product = cart.find(item => item.id === id);
+    if(product){
+        product.qty += delta;
+        if(product.qty < 1) removeFromCart(id);
+    }
+    renderCart();
+}
+
+// Clear all
 clearCartBtn.addEventListener("click", () => {
     cart = [];
-    updateCartUI();
+    renderCart();
 });
 
-// Update cart UI
-function updateCartUI() {
+// Render cart
+function renderCart(){
     cartItemsContainer.innerHTML = "";
-
-    if (cart.length === 0) {
-        cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-        cartSubtotalEl.innerText = "0";
-        document.querySelector(".cart_quantity").innerText = "0";
-        document.querySelector(".cart_text_quantity").innerText = "Rs. 0";
-        return;
+    if(cart.length === 0){
+        emptyCartMessage.style.display = "block";
+        document.getElementById("cartFooter").style.display = "none";
+    } else {
+        emptyCartMessage.style.display = "none";
+        document.getElementById("cartFooter").style.display = "flex";
+        cart.forEach(item => {
+            const div = document.createElement("div");
+            div.classList.add("cart_item");
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="cart_item_img">
+                <div class="cart_item_details">
+                    <p class="cart_item_name">${item.name}</p>
+                    <p class="cart_item_price">Rs. ${item.price}</p>
+                    <div class="cart_item_qty">
+                        <button onclick="changeQty(${item.id}, -1)">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="changeQty(${item.id}, 1)">+</button>
+                    </div>
+                    <button class="remove_item" onclick="removeFromCart(${item.id})">Remove</button>
+                </div>
+            `;
+            cartItemsContainer.appendChild(div);
+        });
     }
 
-    let subtotal = 0;
-    cart.forEach(item => {
-        subtotal += item.price * item.quantity;
+    // Update subtotal
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    cartSubtotal.textContent = subtotal;
 
-        const itemEl = document.createElement("div");
-        itemEl.classList.add("cart_item");
-        itemEl.innerHTML = `
-            <span>${item.name} x ${item.quantity}</span>
-            <span>Rs. ${item.price * item.quantity}</span>
-            <button onclick="removeFromCart(${item.id})">Remove</button>
-        `;
-        cartItemsContainer.appendChild(itemEl);
-    });
-
-    cartSubtotalEl.innerText = subtotal;
-    document.querySelector(".cart_quantity").innerText = cart.reduce((acc, i) => acc + i.quantity, 0);
-    document.querySelector(".cart_text_quantity").innerText = `Rs. ${subtotal}`;
-
-    // Update checkout link
-    checkoutBtn.href = `https://wa.me/YourNumberHere?text=${encodeURIComponent(generateWhatsAppMessage())}`;
+    // Update WhatsApp checkout link
+    checkoutBtn.href = `https://wa.me/XXXXXXXXXXXX?text=${encodeURIComponent(
+        cart.map(p => `${p.name} x${p.qty} Rs.${p.price * p.qty}`).join("\n")
+    )}`;
 }
-
-// Generate WhatsApp message
-function generateWhatsAppMessage() {
-    if (cart.length === 0) return "Hello, I want to order nothing yet.";
-    let message = "Hello, I want to order:\n";
-    cart.forEach(item => {
-        message += `- ${item.name} x ${item.quantity} = Rs.${item.price * item.quantity}\n`;
-    });
-    message += `Subtotal: Rs.${cart.reduce((acc, i) => acc + i.price * i.quantity, 0)}`;
-    return message;
-}
-
-// Example usage: addToCart({id: 1, name: "Gold Ring", price: 500});
