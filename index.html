@@ -69,11 +69,12 @@
             </div>
             <!-- header top ends -->
 
-            <!-- header middle starts -->
+            <!-- Header Middle Starts -->
 <div class="header_middle">
     <div class="container">
         <div class="row align-items-center">
 
+            <!-- Contact Info -->
             <div class="col-lg-5">
                 <div class="home_contact">
                     <div class="contact_icone">
@@ -85,14 +86,17 @@
                 </div>
             </div>
 
+            <!-- Logo -->
             <div class="col-lg-2 col-md-3 col-4">
                 <div class="logo">
                     <a href="index.html"><img src="images/logo/logo-ash.png" alt=""></a>
                 </div>
             </div>
 
+            <!-- Right Side Buttons -->
             <div class="col-lg-5 col-md-7 col-6">
                 <div class="middel_right">
+                    <!-- Search -->
                     <div class="search_btn">
                         <a href="#"><i class="ion-ios-search-strong"></i></a>
                         <div class="dropdown_search">
@@ -102,13 +106,18 @@
                             </form>
                         </div>
                     </div>
+
+                    <!-- Wishlist -->
                     <div class="wishlist_btn">
                         <a href="#"><i class="ion-heart"></i></a>
                     </div>
+
+                    <!-- Single Cart Icon -->
                     <div class="cart_link">
-                        <!-- Only cart icon, no mini cart -->
-                        <a href="#"><i class="ion-android-cart"></i></a>
-                        <span class="cart_quantity">2</span>
+                        <a href="#" id="openCart">
+                            <i class="ion-android-cart"></i>
+                            <span class="cart_quantity" id="cartCount">0</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -116,18 +125,16 @@
         </div>
     </div>
 </div>
-<!-- header middle ends -->
-<div class="cart_link">
-    <a href="#" id="openCart"><i class="ion-android-cart"></i><span class="cart_quantity" id="cartCount">0</span></a>
-</div>
+<!-- Header Middle Ends -->
 
+<!-- Cart Popup Window -->
 <div class="cart_popup" id="cartPopup">
     <div class="cart_popup_header">
         <h3>Shopping Cart</h3>
         <button id="closeCart">X</button>
     </div>
     <div class="cart_items" id="cartItems">
-        <!-- Only added products will appear here -->
+        <!-- Only added products appear here -->
     </div>
     <div class="cart_popup_footer">
         <div class="cart_total">
