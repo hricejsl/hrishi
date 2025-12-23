@@ -2501,3 +2501,46 @@ p {
   background: #a8741a;
   color: #fff;
 }
+.cart_popup {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 320px;
+    background: #fff;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+}
+
+.cart_popup_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart_items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.cart_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart_item div button {
+    margin: 0 2px;
+}
+
+.cart_popup_footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
