@@ -115,6 +115,23 @@
                 </div>
             </div>
             <!-- header middle ends -->
+            <!-- Dynamic Cart Popup -->
+        <div class="cart_popup" id="cartPopup">
+            <div class="cart_popup_header">
+                <h3>Shopping Cart</h3>
+                <button id="closeCart">X</button>
+            </div>
+            <div class="cart_items" id="cartItems">
+                <!-- Products will be added dynamically via cart.js -->
+            </div>
+            <div class="cart_popup_footer">
+                <div class="cart_total">
+                    Subtotal: Rs. <span id="cartSubtotal">0</span>
+                </div>
+                <button id="clearCart">Clear All</button>
+                <a href="#" id="checkoutBtn" target="_blank">Checkout via WhatsApp</a>
+            </div>
+        </div>
 
             <!-- header bottom starts -->
             <div class="header_bottom">
@@ -204,23 +221,7 @@
             <!-- header bottom ends -->
         </header>
 
-        <!-- Dynamic Cart Popup -->
-        <div class="cart_popup" id="cartPopup">
-            <div class="cart_popup_header">
-                <h3>Shopping Cart</h3>
-                <button id="closeCart">X</button>
-            </div>
-            <div class="cart_items" id="cartItems">
-                <!-- Products will be added dynamically via cart.js -->
-            </div>
-            <div class="cart_popup_footer">
-                <div class="cart_total">
-                    Subtotal: Rs. <span id="cartSubtotal">0</span>
-                </div>
-                <button id="clearCart">Clear All</button>
-                <a href="#" id="checkoutBtn" target="_blank">Checkout via WhatsApp</a>
-            </div>
-        </div>
+        
 
         <!-- slider section starts -->
         <div class="slider_area slider_black owl-carousel">
