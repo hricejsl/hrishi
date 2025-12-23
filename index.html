@@ -117,9 +117,26 @@
     </div>
 </div>
 <!-- header middle ends -->
+<div class="cart_link">
+    <a href="#" id="openCart"><i class="ion-android-cart"></i><span class="cart_quantity" id="cartCount">0</span></a>
+</div>
 
-            <!-- header middle ends -->
-
+<div class="cart_popup" id="cartPopup">
+    <div class="cart_popup_header">
+        <h3>Shopping Cart</h3>
+        <button id="closeCart">X</button>
+    </div>
+    <div class="cart_items" id="cartItems">
+        <!-- Only added products will appear here -->
+    </div>
+    <div class="cart_popup_footer">
+        <div class="cart_total">
+            Subtotal: $<span id="cartSubtotal">0</span>
+        </div>
+        <button id="clearCart">Clear All</button>
+        <button id="checkoutBtn">Checkout</button>
+    </div>
+</div>
             <!-- header bottom starts -->
 
             <div class="header_bottom sticky-header">
