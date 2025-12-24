@@ -15,7 +15,7 @@
 
     <head>
   ...
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
   ...
 </head>
 </head>
@@ -107,36 +107,44 @@
                                 </div>
                                 <div class="wishlist_btn">
                                     <a href="#"><i class="ion-heart"></i></a>
-                                </div>
-                                <div class="cart_link">
+                                </div><!-- Header Cart Start -->
+<div class="cart_link">
+    <a href="#">
+        <i class="ion-android-cart"></i>  <!-- 🛒 icon -->
+        <span class="cart_text_quantity">Rs. 0</span>
+    </a>
+    <span class="cart_quantity">0</span>
 
-                                    <!-- mini cart -->
-                                    <div class="mini_cart">
-                                        <div class="cart_close">
-                                            <div class="cart_text">
-                                                <h3>cart</h3>
-                                            </div>
-                                            <div class="mini_cart_close">
-                                                <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="mini_cart_footer">
-                                            <div class="cart_button view_cart">
-                                                <a href="#">View Cart</a>
-                                            </div>
-                                            <div class="cart_button checkout">
-                                                <a href="#" class="active">Checkout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- mini cart ends  -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Mini Cart Start -->
+    <div class="mini_cart">
+        <!-- Cart Header -->
+        <div class="cart_close">
+            <div class="cart_text">
+                <h3>Cart</h3>
             </div>
+            <div class="mini_cart_close">
+                <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+            </div>
+        </div>
 
+        <!-- Cart Items Container (JS dynamically adds items) -->
+        <div class="mini_cart_items">
+            <!-- Example cart items can be dynamically generated here via JS -->
+        </div>
+
+        <!-- Mini Cart Footer -->
+        <div class="mini_cart_footer">
+            <div class="cart_button view_cart">
+                <a href="cart.html">View Cart</a>
+            </div>
+            <div class="cart_button checkout">
+                <a href="checkout.html" class="active">Checkout</a>
+            </div>
+        </div>
+    </div>
+    <!-- Mini Cart End -->
+</div>
+<!-- Header Cart End -->
             <!-- header middle ends -->
 
             <!-- header bottom starts -->
