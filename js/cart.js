@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cartPopup.classList.remove("active");
     });
 
-    // Add product example
+    // Add product
     window.addToCart = function(product){
         const existing = cart.find(item => item.id === product.id);
         if(existing){
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        // WhatsApp checkout link example
+        // Update WhatsApp checkout link
         checkoutBtn.href = `https://wa.me/XXXXXXXXXXXX?text=${encodeURIComponent(
             cart.map(p => `${p.name} x${p.qty} Rs.${p.price * p.qty}`).join("\n")
         )}`;
