@@ -2757,3 +2757,61 @@ p {
 .main_menu nav ul li ul.mega_menu > li > a:hover {
   color: #a8741a;      /* Hover color */
 }
+
+/* ====== Mega Menu Mobile Friendly Fix ====== */
+
+/* Parent li ko relative rakho */
+.main_menu nav ul li {
+  position: relative; 
+}
+
+/* Mega menu styling override */
+.main_menu nav ul li ul.mega_menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  transform: none !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.4s ease;
+  z-index: 9999;
+  max-width: 100vw;        /* Mobile me screen ke andar */
+  overflow: hidden;
+  max-height: 0;            /* Slide up/down effect ke liye */
+  box-sizing: border-box;  
+}
+
+/* Hover effect (desktop) */
+.main_menu nav ul li:hover ul.mega_menu {
+  opacity: 1;
+  visibility: visible;
+  max-height: 1000px;       /* Large value for smooth slide */
+}
+
+/* Optional: Adjust mega menu links */
+.main_menu nav ul li ul.mega_menu > li > a {
+  color: #ffffff;
+}
+
+.main_menu nav ul li ul.mega_menu > li > a:hover {
+  color: #a8741a;
+}
+
+/* ====== Mobile Touch-Friendly Menu ====== */
+@media (max-width: 768px) {
+  .main_menu nav ul li ul.mega_menu {
+    position: relative !important;  /* Mobile me absolute remove */
+    top: auto !important;
+    left: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: none !important;
+  }
+
+  .main_menu nav ul li ul.mega_menu > li > a {
+    display: block;
+    padding: 12px 16px;
+  }
+}
