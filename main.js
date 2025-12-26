@@ -209,3 +209,23 @@ $(document).on("submit", "#subscribe_form", function (e) {
         });
     });
 })();
+// Quick View JS
+$(document).ready(function() {
+  $(".quick_button a").on("click", function(e) {
+    e.preventDefault();
+    
+    var product = $(this).closest(".single_product");
+
+    var img = product.find(".primary_img img").attr("src");
+    var title = product.find(".product_content h3 a").text();
+    var desc = product.find(".product_desc p").text();
+    var price = product.find(".price_box").html();
+
+    $("#quickview_image").attr("src", img);
+    $("#quickview_title").text(title);
+    $("#quickview_desc").text(desc);
+    $("#quickview_price").html(price);
+
+    $("#quickview_modal").modal("show");
+  });
+});
