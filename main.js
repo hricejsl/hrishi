@@ -45,7 +45,6 @@
     centerMode: true,
     centerPadding: "0",
     slidesToShow: 5,
-    rows: 2,
     arrows: true,
     prevArrow: '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
     nextArrow: '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
