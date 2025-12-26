@@ -407,3 +407,70 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+(function($){
+  "use strict";
+
+  // ===== Prevent all # links from scrolling top =====
+  document.addEventListener('DOMContentLoaded', function () {
+      const hashLinks = document.querySelectorAll('a[href="#"]');
+
+      hashLinks.forEach(function(link) {
+          // Change href to safe JS
+          link.setAttribute('href', 'javascript:void(0)');
+          // Prevent default scrolling
+          link.addEventListener('click', function(e){
+              e.preventDefault();
+          });
+      });
+  });
+
+  // ===== Boss-ready Subscribe Function =====
+  const form = document.getElementById('subscribe_form');
+  if(form){
+      const emailInput = form.querySelector('input[type="email"]');
+      const button = form.querySelector('button');
+
+      form.addEventListener('submit', function(e){
+          e.preventDefault(); // stop page scroll
+
+          const email = emailInput.value.trim();
+          if(email === '' || !email.includes('@')){
+              alert('Boss! Please enter a valid email.');
+              return;
+          }
+
+          emailInput.disabled = true;
+          button.disabled = true;
+          button.innerHTML = 'Subscribing...';
+
+          setTimeout(() => {
+              alert('Thanks boss! You are now subscribed.');
+              form.reset();
+              emailInput.disabled = false;
+              button.disabled = false;
+
+              // Boss animation
+              button.innerHTML = '✔ Subscribed';
+              button.classList.add('subscribe-success');
+              setTimeout(() => {
+                  button.innerHTML = 'Subscribe';
+                  button.classList.remove('subscribe-success');
+              }, 2000);
+          }, 1000);
+      });
+  }
+
+  // ===== Quick View Modal =====
+  $('.quick_button a').on('click', function(e){
+      e.preventDefault(); // no scroll
+      const modalId = $(this).data('target'); // e.g., #modal_box
+      $(modalId).modal('show'); // bootstrap modal open
+  });
+
+  // ===== Compare button fix =====
+  $('.action_links ul li a[title="Compare"]').on('click', function(e){
+      e.preventDefault(); // boss scroll fix
+      alert('Boss! Compare feature coming soon 😎');
+  });
+
+})(jQuery);
