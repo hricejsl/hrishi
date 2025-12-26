@@ -3860,6 +3860,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <script src="main.js"></script>
+    
+    <!-- Quick View Modal -->
+<div class="modal fade" id="quickview_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="quickview_content">
+          <div class="quickview_img">
+            <img src="" alt="Product Image" id="quickview_image">
+          </div>
+          <div class="quickview_info">
+            <h3 id="quickview_title"></h3>
+            <p id="quickview_desc"></p>
+            <div class="quickview_price" id="quickview_price"></div>
+            <button class="add_to_cart_modal">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
