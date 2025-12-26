@@ -1,7 +1,7 @@
 (function ($) {
   "use strict";
 
-  /* WOW Animation */
+  /* ================= WOW ================= */
   new WOW().init();
 
   /* ================= CART ================= */
@@ -17,10 +17,10 @@
 
   /* ================= STICKY HEADER ================= */
   $(window).on("scroll", function () {
-    if ($(this).scrollTop() < 100) {
-      $(".sticky-header").removeClass("sticky");
-    } else {
+    if ($(this).scrollTop() > 100) {
       $(".sticky-header").addClass("sticky");
+    } else {
+      $(".sticky-header").removeClass("sticky");
     }
   });
 
@@ -29,49 +29,38 @@
     $(this).css("background-image", "url(" + $(this).data("bgimg") + ")");
   });
 
-  /* ================= SLIDER ================= */
+  /* ================= HERO SLIDER ================= */
   $(".slider_area").owlCarousel({
-    animateOut: "fadeOut",
-    autoplay: true,
-    loop: true,
-    nav: false,
-    autoplayTimeout: 6000,
     items: 1,
+    loop: true,
+    autoplay: true,
     dots: true,
+    animateOut: "fadeOut",
   });
 
-  /* ================= PRODUCT COLUMN ================= */
+  /* ================= PRODUCT SLIDER ================= */
   $(".product_column3").slick({
-    centerMode: true,
-    centerPadding: "0",
     slidesToShow: 5,
     arrows: true,
-    prevArrow: '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
-    nextArrow: '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
+    prevArrow:
+      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 4 } },
       { breakpoint: 992, settings: { slidesToShow: 3 } },
       { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 400, settings: { slidesToShow: 1 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
     ],
   });
 
-  /* ================= TOOLTIP ================= */
-  $('[data-toggle="tooltip"]').tooltip();
-
-  $(".action_links ul li a, .quick_button a").tooltip({
-    placement: "top",
-    container: "body",
-  });
-
-  /* ================= BLOG ================= */
+  /* ================= BLOG SLIDER ================= */
   $(".blog_column3").owlCarousel({
-    autoplay: true,
-    loop: true,
-    nav: true,
-    autoplayTimeout: 5000,
     items: 3,
+    loop: true,
+    autoplay: true,
     margin: 30,
+    nav: true,
     dots: false,
     navText: [
       '<i class="ion-chevron-left"></i>',
@@ -84,469 +73,41 @@
     },
   });
 
-  /* ================= PRODUCT NAV ================= */
-  $(".product_navactive").owlCarousel({
-    loop: true,
-    nav: true,
-    items: 4,
-    dots: false,
-    navText: [
-      '<i class="ion-chevron-left"></i>',
-      '<i class="ion-chevron-right"></i>',
-    ],
-    responsive: {
-      0: { items: 1 },
-      480: { items: 2 },
-      768: { items: 3 },
-      992: { items: 4 },
-    },
-  });
+  /* ================= TOOLTIP ================= */
+  $('[data-toggle="tooltip"]').tooltip();
 
-  $(".product_navactive a").on("click", function (e) {
+  /* ================= QUICK VIEW ================= */
+  $(".quick_button a").on("click", function (e) {
     e.preventDefault();
-    $(".product_navactive a").removeClass("active");
-    $(this).addClass("active");
-    $(".product-details-large .tab-pane").removeClass("active show");
-    $($(this).attr("href")).addClass("active show");
-  });
 
-})(jQuery);
+    const product = $(this).closest(".single_product");
 
-
-/* ======================================================
-   🔥 FINAL SUBSCRIBE FIX – NO PAGE JUMP – FULL UX
-====================================================== */
-$(document).on("submit", "#subscribe_form", function (e) {
-  e.preventDefault(); // 🚫 STOP page reload / top jump
-
-  const $form = $(this);
-  const $email = $form.find('input[type="email"]');
-  const $btn = $form.find("button");
-
-  if ($email.val().trim() === "") {
-    alert("Boss email likho 😄");
-    return;
-  }
-
-  // UX: subscribing
-  $btn.prop("disabled", true).text("Subscribing...");
-
-  setTimeout(function () {
-    alert("Thanks boss! You are subscribed ✅");
-
-    $btn.text("✔ Subscribed").addClass("subscribed");
-
-    setTimeout(function () {
-      $btn.prop("disabled", false).text("Subscribe");
-      $btn.removeClass("subscribed");
-      $form[0].reset();
-    }, 2000);
-
-  }, 1000);
-});
-// ===== Boss-ready Compare Feature =====
-(function() {
-    const maxCompare = 3; // maximum products to compare
-    let compareList = [];
-
-    // function to create popup HTML
-    function showComparePopup() {
-        let popup = document.getElementById('compare_popup');
-        if(!popup) {
-            popup = document.createElement('div');
-            popup.id = 'compare_popup';
-            popup.style.position = 'fixed';
-            popup.style.bottom = '20px';
-            popup.style.right = '20px';
-            popup.style.background = '#fff';
-            popup.style.padding = '20px';
-            popup.style.border = '1px solid #ccc';
-            popup.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
-            popup.style.zIndex = '9999';
-            popup.style.maxWidth = '400px';
-            popup.style.display = 'none';
-            document.body.appendChild(popup);
-        }
-
-        // generate HTML content
-        let html = '<h4>Compare Products</h4><ul style="list-style:none;padding:0;">';
-        compareList.forEach(item => {
-            html += `<li>${item.name} - Rs.${item.price}</li>`;
-        });
-        html += '</ul>';
-        html += '<button id="clear_compare" style="margin-top:10px;">Clear</button>';
-        popup.innerHTML = html;
-        popup.style.display = 'block';
-
-        // clear button
-        document.getElementById('clear_compare').addEventListener('click', function(){
-            compareList = [];
-            popup.style.display = 'none';
-        });
-    }
-
-    // handle compare icon click
-    document.querySelectorAll('.compare-icon').forEach(icon => {
-        icon.addEventListener('click', function(e){
-            e.preventDefault();
-            const product = this.closest('.single_product');
-            const name = product.querySelector('h3 a').textContent;
-            const price = product.querySelector('.current_price').textContent;
-
-            // avoid duplicates
-            if(compareList.find(p => p.name === name)) {
-                alert('Boss! This product is already in compare list 😎');
-                return;
-            }
-
-            if(compareList.length >= maxCompare) {
-                alert('Boss! Max 3 products can be compared at once.');
-                return;
-            }
-
-            compareList.push({name, price});
-            showComparePopup();
-        });
-    });
-})();
-// Quick View JS
-$(document).ready(function() {
-  $(".quick_button a").on("click", function(e) {
-    e.preventDefault();
-    
-    var product = $(this).closest(".single_product");
-
-    var img = product.find(".primary_img img").attr("src");
-    var title = product.find(".product_content h3 a").text();
-    var desc = product.find(".product_desc p").text();
-    var price = product.find(".price_box").html();
-
-    $("#quickview_image").attr("src", img);
-    $("#quickview_title").text(title);
-    $("#quickview_desc").text(desc);
-    $("#quickview_price").html(price);
+    $("#quickview_image").attr(
+      "src",
+      product.find(".primary_img img").attr("src")
+    );
+    $("#quickview_title").text(product.find("h3 a").text());
+    $("#quickview_price").html(product.find(".price_box").html());
 
     $("#quickview_modal").modal("show");
   });
-});
 
-document.querySelectorAll('.quick_button a').forEach(btn => {
-  btn.addEventListener('click', function(e) {
+  /* ================= SUBSCRIBE ================= */
+  $("#subscribe_form").on("submit", function (e) {
     e.preventDefault();
-
-    const product = this.closest('.single_product');
-    const img = product.querySelector('.primary_img img').src;
-    const title = product.querySelector('.product_content h3 a').textContent;
-    const desc = product.querySelector('.product_desc p') ? product.querySelector('.product_desc p').textContent : '';
-    const price = product.querySelector('.price_box') ? product.querySelector('.price_box').innerHTML : '';
-
-    // Set modal content
-    document.getElementById('quickview_image').src = img;
-    document.getElementById('quickview_title').textContent = title;
-    document.getElementById('quickview_desc').textContent = desc;
-    document.getElementById('quickview_price').innerHTML = price;
-
-    // Show modal
-    $('#quickview_modal').modal('show');
-  });
-});
-let compareList = [];
-
-function addToCompare(product) {
-  // Check duplicate
-  if(compareList.find(p => p.id === product.id)) {
-    alert('Product already in compare!');
-    return;
-  }
-
-  compareList.push(product);
-  alert('Product added to compare!');
-
-  if(compareList.length > 1) {
-    showCompareModal();
-  }
-}
-
-function showCompareModal() {
-  const container = document.getElementById('compare_table');
-  container.innerHTML = '';
-
-  compareList.forEach(p => {
-    const card = document.createElement('div');
-    card.style.minWidth = '200px';
-    card.style.border = '1px solid #ccc';
-    card.style.padding = '10px';
-    card.style.textAlign = 'center';
-
-    card.innerHTML = `
-      <img src="${p.img}" alt="${p.title}" style="width:100%; height:auto; margin-bottom:5px;">
-      <h6>${p.title}</h6>
-      <p>${p.price}</p>
-      <button class="btn btn-sm btn-danger remove-compare" data-id="${p.id}">Remove</button>
-    `;
-    container.appendChild(card);
+    alert("Thanks boss! You are subscribed ✅");
+    this.reset();
   });
 
-  // Add remove buttons
-  container.querySelectorAll('.remove-compare').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const id = btn.getAttribute('data-id');
-      compareList = compareList.filter(p => p.id != id);
-      showCompareModal(); // refresh modal
-    });
-  });
-
-  // Show modal
-  const compareModal = new bootstrap.Modal(document.getElementById('compare_modal'));
-  compareModal.show();
-}
-
-// Clear all button
-document.getElementById('clear_compare').addEventListener('click', () => {
-  compareList = [];
-  showCompareModal();
-});
-
-document.querySelectorAll('.compare-btn').forEach(btn => {
-  btn.addEventListener('click', e => {
+  /* ================= PREVENT # SCROLL ================= */
+  $('a[href="#"]').on("click", function (e) {
     e.preventDefault();
-    const product = {
-      id: btn.getAttribute('data-id'),
-      img: btn.getAttribute('data-img'),
-      title: btn.getAttribute('data-title'),
-      price: btn.getAttribute('data-price')
-    };
-    addToCompare(product);
-  });
-});
-const compareProducts = []; // selected products
-
-// Add click on compare buttons
-document.querySelectorAll('.compare-btn').forEach(btn => {
-  btn.addEventListener('click', function(e){
-    e.preventDefault(); // boss, page top scroll rok diya
-
-    const product = {
-      id: this.getAttribute('data-id'),
-      img: this.getAttribute('data-img'),
-      title: this.getAttribute('data-title'),
-      price: this.getAttribute('data-price')
-    };
-
-    // Check duplicates
-    if(compareProducts.find(p => p.id === product.id)) {
-      alert('Boss! Ye product already add ho chuka hai.');
-      return;
-    }
-
-    compareProducts.push(product);
-    updateCompareModal();
-    openCompareModal();
-  });
-});
-
-// Update modal content
-function updateCompareModal() {
-  const container = document.querySelector('.compare_items');
-  container.innerHTML = ''; // clear
-  compareProducts.forEach(p => {
-    container.innerHTML += `
-      <div class="compare_item">
-        <img src="${p.img}" alt="${p.title}">
-        <h4>${p.title}</h4>
-        <p>${p.price}</p>
-      </div>
-    `;
-  });
-}
-
-// Open modal
-function openCompareModal() {
-  document.getElementById('compare_modal').style.display = 'flex';
-}
-
-// Close modal
-document.querySelector('.close_compare').addEventListener('click', function(){
-  document.getElementById('compare_modal').style.display = 'none';
-});
-
-// ===== Boss-ready Compare Button Function =====
-document.addEventListener('DOMContentLoaded', function () {
-    // Select all compare buttons
-    const compareButtons = document.querySelectorAll('.action_links ul li a[title="Compare"]');
-
-    compareButtons.forEach(function (btn) {
-        // Change href to prevent page jump
-        btn.setAttribute('href', 'javascript:void(0)');
-
-        // Add click event for popup / action
-        btn.addEventListener('click', function (e) {
-            e.preventDefault(); // Stops page from going to top
-
-            // Boss: action you want on compare, for now simple alert
-            alert('Boss! Compare feature clicked for this product.');
-            
-            // Optional: Add product to compare list array
-            // You can implement a popup modal showing selected products here
-        });
-    });
-});
-
-// ===== Boss: Prevent all # links from scrolling to top =====
-document.addEventListener('DOMContentLoaded', function () {
-    // Select all anchor tags with href="#"
-    const hashLinks = document.querySelectorAll('a[href="#"]');
-
-    hashLinks.forEach(function(link) {
-        // Change href to javascript:void(0)
-        link.setAttribute('href', 'javascript:void(0)');
-
-        // Prevent default behavior
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-        });
-    });
-});
-(function($){
-  "use strict";
-
-  // ===== Prevent all # links from scrolling top =====
-  document.addEventListener('DOMContentLoaded', function () {
-      const hashLinks = document.querySelectorAll('a[href="#"]');
-
-      hashLinks.forEach(function(link) {
-          // Change href to safe JS
-          link.setAttribute('href', 'javascript:void(0)');
-          // Prevent default scrolling
-          link.addEventListener('click', function(e){
-              e.preventDefault();
-          });
-      });
   });
 
-  // ===== Boss-ready Subscribe Function =====
-  const form = document.getElementById('subscribe_form');
-  if(form){
-      const emailInput = form.querySelector('input[type="email"]');
-      const button = form.querySelector('button');
-
-      form.addEventListener('submit', function(e){
-          e.preventDefault(); // stop page scroll
-
-          const email = emailInput.value.trim();
-          if(email === '' || !email.includes('@')){
-              alert('Boss! Please enter a valid email.');
-              return;
-          }
-
-          emailInput.disabled = true;
-          button.disabled = true;
-          button.innerHTML = 'Subscribing...';
-
-          setTimeout(() => {
-              alert('Thanks boss! You are now subscribed.');
-              form.reset();
-              emailInput.disabled = false;
-              button.disabled = false;
-
-              // Boss animation
-              button.innerHTML = '✔ Subscribed';
-              button.classList.add('subscribe-success');
-              setTimeout(() => {
-                  button.innerHTML = 'Subscribe';
-                  button.classList.remove('subscribe-success');
-              }, 2000);
-          }, 1000);
-      });
-  }
-
-  // ===== Quick View Modal =====
-  $('.quick_button a').on('click', function(e){
-      e.preventDefault(); // no scroll
-      const modalId = $(this).data('target'); // e.g., #modal_box
-      $(modalId).modal('show'); // bootstrap modal open
-  });
-
-  // ===== Compare button fix =====
-  $('.action_links ul li a[title="Compare"]').on('click', function(e){
-      e.preventDefault(); // boss scroll fix
-      alert('Boss! Compare feature coming soon 😎');
+  /* ================= DISABLE COMPARE (SAFE) ================= */
+  $('.action_links a[title="Compare"]').on("click", function (e) {
+    e.preventDefault();
+    alert("Boss 😄 Compare feature baad me add karenge");
   });
 
 })(jQuery);
-
-(function($){
-  "use strict";
-
-  // Compare Array
-  let compareProducts = [];
-
-  // On Compare Button Click
-  $('.action_links ul li a[title="Compare"]').on('click', function(e){
-      e.preventDefault(); // stop scroll
-
-      if(compareProducts.length >= 3){
-          alert('Boss! Maximum 3 products can be compared.');
-          return;
-      }
-
-      const productCard = $(this).closest('.single_product');
-      const productName = productCard.find('h3 a').text();
-      const productImage = productCard.find('.primary_img img').attr('src');
-      const productPrice = productCard.find('.current_price').text();
-
-      // Avoid duplicate
-      if(compareProducts.some(p => p.name === productName)){
-          alert('Boss! This product is already added.');
-          return;
-      }
-
-      // Add to compare array
-      compareProducts.push({name: productName, image: productImage, price: productPrice});
-      updateCompareModal();
-      $('#compare_modal').modal('show');
-  });
-
-  // Update Compare Modal
-  function updateCompareModal(){
-      const container = $('.compare_products_container');
-      container.empty();
-      compareProducts.forEach(p => {
-          container.append(`
-              <div class="compare_product_card" style="text-align:center;">
-                  <img src="${p.image}" alt="${p.name}" style="width:100px; height:auto;">
-                  <h6>${p.name}</h6>
-                  <p>${p.price}</p>
-              </div>
-          `);
-      });
-  }
-
-  // Clear Compare List
-  $('.clear_compare').on('click', function(){
-      compareProducts = [];
-      updateCompareModal();
-  });
-
-})(jQuery);
-
-// ===== GLOBAL FIX: Stop all # links scrolling to top =====
-document.addEventListener("DOMContentLoaded", function () {
-
-  // select ALL anchor tags
-  const allLinks = document.querySelectorAll("a");
-
-  allLinks.forEach(function (link) {
-    const href = link.getAttribute("href");
-
-    // if href is exactly #
-    if (href === "#") {
-      link.setAttribute("href", "javascript:void(0)");
-
-      link.addEventListener("click", function (e) {
-        e.preventDefault(); // 🔥 MAIN LINE
-      });
-    }
-  });
-
-});
