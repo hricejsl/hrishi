@@ -209,4 +209,56 @@
     $(".product-details-large .tab-pane").removeClass("active show");
     $(".product-details-large " + $href).addClass("active show");
   });
+
+  // ===== Boss-ready Subscribe Function =====
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.newsletter_content form');
+    const emailInput = form.querySelector('input');
+
+    // Optional honeypot for spam
+    const honeypot = document.createElement('input');
+    honeypot.type = 'text';
+    honeypot.name = 'website';
+    honeypot.style.display = 'none';
+    form.appendChild(honeypot);
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent page reload
+
+      // Boss: spam check
+      if(honeypot.value !== '') {
+        console.warn('Bot detected! Submission ignored.');
+        return;
+      }
+
+      const email = emailInput.value.trim();
+
+      // Boss: Input validation
+      if(email === '' || !email.includes('@') || !email.includes('.')) {
+        alert('Boss! Please enter a valid email.');
+        return;
+      }
+
+      // Boss: UX Feedback
+      emailInput.disabled = true;
+      form.querySelector('button').disabled = true;
+      form.querySelector('button').innerText = 'Subscribing...';
+
+      // Simulate async submission (replace with real API later)
+      setTimeout(() => {
+        alert('Thanks boss! You are now subscribed.');
+        form.reset();
+        emailInput.disabled = false;
+        form.querySelector('button').disabled = false;
+        form.querySelector('button').innerText = 'Subscribe';
+
+        // Boss: optional animation enhancement
+        form.querySelector('button').classList.add('subscribe-success');
+        setTimeout(() => {
+          form.querySelector('button').classList.remove('subscribe-success');
+        }, 2000);
+      }, 1000);
+    });
+  });
+
 })(jQuery);
