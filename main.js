@@ -264,5 +264,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     });
 });
+$("#subscribe_form").on("submit", function (e) {
+  e.preventDefault(); // 🔥 YE LINE MOST IMPORTANT
+
+  const email = $(this).find('input[type="email"]').val();
+
+  if (email === "") {
+    alert("Boss email likho pahle 😄");
+    return;
+  }
+
+  alert("Thanks for subscribing boss! ✅");
+
+  // agar Mailchimp use kar rahe ho
+  this.submit(); // comment karo agar popup nahi chahiye
+});
 
 })(jQuery);
