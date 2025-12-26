@@ -1994,7 +1994,7 @@ ul {
   display: block;
   margin-top: 10px;
 }
-/* ================= Subscribe Section – Ultimate Luxury ================= */
+/* ================= Subscribe Section – Final Luxury ================= */
 .newsletter_area {
   border-bottom: 1px solid #ebebeb;
   padding: 70px 20px 80px;
@@ -2006,11 +2006,11 @@ ul {
   color: #ffd700;
   font-family: 'Georgia', serif;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 32px;        /* final font size */
+  line-height: 42px;      /* perfect spacing */
   letter-spacing: 1px;
-  line-height: 36px;
   margin-bottom: 15px;
-  text-transform: uppercase;
+  text-transform: none;   /* uppercase removed */
 }
 
 .newsletter_black p {
