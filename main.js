@@ -144,3 +144,40 @@ $(document).on("submit", "#subscribe_form", function (e) {
 
   }, 1000);
 });
+
+// ===== Boss: Horizontal Product Carousel Fix =====
+$(".product_column3").slick({
+    centerMode: true,
+    centerPadding: "0",
+    slidesToShow: 5,
+    arrows: true,
+    rows: 1,            // boss horizontal layout
+    prevArrow:
+      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
+    responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: 4 } },
+      { breakpoint: 992, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 400, settings: { slidesToShow: 1 } }
+    ],
+});
+
+$(".product_row1").slick({
+    centerMode: true,
+    centerPadding: "0",
+    slidesToShow: 5,
+    arrows: true,
+    rows: 1,            // boss horizontal layout
+    prevArrow:
+      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
+    responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: 4 } },
+      { breakpoint: 992, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 400, settings: { slidesToShow: 1 } }
+    ],
+});
