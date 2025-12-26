@@ -319,3 +319,53 @@ document.querySelectorAll('.compare-btn').forEach(btn => {
     addToCompare(product);
   });
 });
+const compareProducts = []; // selected products
+
+// Add click on compare buttons
+document.querySelectorAll('.compare-btn').forEach(btn => {
+  btn.addEventListener('click', function(e){
+    e.preventDefault(); // boss, page top scroll rok diya
+
+    const product = {
+      id: this.getAttribute('data-id'),
+      img: this.getAttribute('data-img'),
+      title: this.getAttribute('data-title'),
+      price: this.getAttribute('data-price')
+    };
+
+    // Check duplicates
+    if(compareProducts.find(p => p.id === product.id)) {
+      alert('Boss! Ye product already add ho chuka hai.');
+      return;
+    }
+
+    compareProducts.push(product);
+    updateCompareModal();
+    openCompareModal();
+  });
+});
+
+// Update modal content
+function updateCompareModal() {
+  const container = document.querySelector('.compare_items');
+  container.innerHTML = ''; // clear
+  compareProducts.forEach(p => {
+    container.innerHTML += `
+      <div class="compare_item">
+        <img src="${p.img}" alt="${p.title}">
+        <h4>${p.title}</h4>
+        <p>${p.price}</p>
+      </div>
+    `;
+  });
+}
+
+// Open modal
+function openCompareModal() {
+  document.getElementById('compare_modal').style.display = 'flex';
+}
+
+// Close modal
+document.querySelector('.close_compare').addEventListener('click', function(){
+  document.getElementById('compare_modal').style.display = 'none';
+});
