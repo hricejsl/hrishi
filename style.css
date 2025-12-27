@@ -1,302 +1,276 @@
-/* ==================================
+/* ===============================================
    Google Fonts
-================================== */
+=============================================== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-/* ==================================
-   Reset & Base Styles
-================================== */
+/* ===============================================
+   Global Reset
+=============================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
-
 body {
-    background-color: #f7f7f7; /* page background same as before */
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4; /* Pahle jaise background */
     color: #333;
     line-height: 1.6;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+/* ===============================================
+   Header
+=============================================== */
+.header_top, .header_middle, .header_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
 }
 
-ul {
+.header_bottom.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav.main_menu ul {
+    display: flex;
     list-style: none;
 }
 
-/* ==================================
-   Header
-================================== */
-header {
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    border-bottom: 1px solid #ddd;
+nav.main_menu ul li {
     position: relative;
-    z-index: 999;
+    margin-right: 20px;
 }
 
-header .logo img {
-    max-height: 60px;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-}
-
-nav ul {
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li {
-    position: relative;
-}
-
-nav ul li a {
+nav.main_menu ul li a {
+    text-decoration: none;
+    color: #333;
     padding: 10px 5px;
     display: block;
 }
 
-nav ul li ul {
+nav.main_menu ul li.has-submenu > a::after {
+    content: " ▼";
+    font-size: 10px;
+}
+
+nav.main_menu ul li .submenu {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
     background: #fff;
-    border: 1px solid #ddd;
-    display: none;
+    padding: 10px 0;
     min-width: 180px;
-    z-index: 999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-nav ul li:hover ul {
-    display: none; /* Submenu will open only on click via JS */
+nav.main_menu ul li .submenu li {
+    margin: 0;
 }
 
-nav ul li ul li a {
-    padding: 10px;
-    display: block;
+nav.main_menu ul li .submenu li a {
+    padding: 8px 15px;
+    white-space: nowrap;
 }
 
-/* ==================================
-   Banner Section
-================================== */
-.banner_area {
+/* ===============================================
+   Hero / Banner
+=============================================== */
+.slider_area {
     position: relative;
     width: 100%;
     height: 500px;
-    background: url('banner.jpg') center center/cover no-repeat;
+    overflow: hidden;
+}
+
+.slider_area .owl-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===============================================
+   Products
+=============================================== */
+.product_column3 {
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.banner_area .banner_content {
-    color: #fff;
-    text-align: center;
-}
-
-.banner_area h1 {
-    font-size: 48px;
-    font-weight: 600;
-}
-
-.banner_area p {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-/* ==================================
-   Product Section
-================================== */
-.products_area {
-    padding: 60px 30px;
-    display: flex;
+    gap: 15px;
     flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
 }
 
-.products_area .product_item {
+.single_product {
     background: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 280px;
+    transition: transform 0.3s;
 }
 
-.products_area .product_item:hover {
+.single_product:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.products_area .product_item img {
-    max-width: 100%;
-    height: auto;
+.single_product img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
 }
 
-/* ==================================
-   Subscribe Section
-================================== */
+/* ===============================================
+   Quick View Modal
+=============================================== */
+#quickview_modal .modal-content {
+    background: #fff;
+    padding: 20px;
+}
+
+/* ===============================================
+   Mini Cart
+=============================================== */
+.mini_cart {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    z-index: 9999;
+}
+.mini_cart.active {
+    transform: translateX(0);
+}
+
+/* ===============================================
+   Subscribe / Newsletter
+=============================================== */
 .newsletter_area {
+    padding: 50px 20px;
     background: #242424;
     color: #fff;
-    padding: 60px 30px;
     text-align: center;
 }
 
 .newsletter_area h2 {
-    font-size: 32px;
     margin-bottom: 15px;
+    font-size: 28px;
 }
 
 .newsletter_area p {
     margin-bottom: 25px;
+    font-size: 16px;
 }
 
-.newsletter_area .subscribe_form input {
-    padding: 10px 15px;
-    width: 250px;
+.newsletter_area .subscibe_form input {
+    padding: 10px;
+    width: 300px;
+    max-width: 100%;
     border: none;
-    outline: none;
-    border-radius: 3px;
     margin-right: 10px;
 }
 
-.newsletter_area .subscribe_form button {
+.newsletter_area .subscibe_form button {
     padding: 10px 20px;
-    border: none;
-    background: #f7b500;
+    background: #ff4c3b;
     color: #fff;
-    border-radius: 3px;
+    border: none;
     cursor: pointer;
 }
 
-/* ==================================
-   Instagram Section
-================================== */
-.instagram_area {
-    padding: 60px 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.instagram_area .insta_item img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-}
-
-.instagram_area .insta_item:hover img {
-    transform: scale(1.05);
-}
-
-/* ==================================
+/* ===============================================
    Modal Section
-================================== */
-.modal {
-    display: none;
+=============================================== */
+.modal_area {
     position: fixed;
-    z-index: 9999;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.7);
-    justify-content: center;
+    background: rgba(0,0,0,0.6);
+    display: none;
     align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal_area.active {
+    display: flex;
 }
 
 .modal_content {
     background: #fff;
-    padding: 30px;
-    border-radius: 5px;
-    width: 500px;
-    max-width: 90%;
-    position: relative;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
 }
 
-.modal_close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-/* ==================================
-   Mini Cart
-================================== */
-.mini_cart {
-    position: fixed;
-    right: -400px;
-    top: 0;
-    width: 400px;
-    height: 100%;
+/* ===============================================
+   Blog
+=============================================== */
+.blog_column3 .single_blog {
     background: #fff;
-    box-shadow: -2px 0 15px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 999;
-    overflow-y: auto;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
 }
 
-.mini_cart.active {
-    right: 0;
+.blog_column3 .single_blog img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
-.mini_cart_close {
-    text-align: right;
-    padding: 10px;
-}
-
-/* ==================================
-   Footer
-================================== */
-footer {
-    background: #242424;
-    color: #fff;
-    padding: 40px 30px;
+/* ===============================================
+   Instagram Section
+=============================================== */
+.instagram_area {
+    padding: 50px 20px;
+    background: #f9f9f9;
     text-align: center;
 }
 
-/* ==================================
-   Responsive
-================================== */
-@media (max-width: 991px) {
-    nav ul {
-        flex-direction: column;
-        display: none;
-    }
-    
-    nav ul.active {
-        display: flex;
-    }
-    
-    .products_area {
-        justify-content: center;
-    }
+.instagram_area img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 5px;
 }
 
-@media (max-width: 768px) {
-    header {
+/* ===============================================
+   Footer
+=============================================== */
+footer {
+    background: #242424;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* ===============================================
+   Responsive
+=============================================== */
+@media (max-width: 991px) {
+    nav.main_menu ul {
         flex-direction: column;
-        gap: 15px;
     }
-    
-    .banner_area {
-        height: 300px;
+    nav.main_menu ul li {
+        margin-right: 0;
+    }
+    nav.main_menu ul li .submenu {
+        position: relative;
+    }
+}
+@media (max-width: 767px) {
+    .product_column3 {
+        flex-direction: column;
     }
 }
