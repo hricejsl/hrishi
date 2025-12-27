@@ -111,3 +111,51 @@
   });
 
 })(jQuery);
+
+(function ($) {
+    "use strict";
+
+    /* ================== WOW Animation ================== */
+    new WOW().init();
+
+    /* ================== Mini Cart ================== */
+    $(".cart_link > a").on("click", function (e) {
+        e.preventDefault();
+        $(".mini_cart").addClass("active");
+    });
+
+    $(".mini_cart_close > a").on("click", function (e) {
+        e.preventDefault();
+        $(".mini_cart").removeClass("active");
+    });
+
+    /* ================== Modal Section ================== */
+    $(".open_modal").on("click", function (e) {
+        e.preventDefault();
+        $(".modal_area").addClass("active");
+    });
+
+    $(".modal_close").on("click", function (e) {
+        e.preventDefault();
+        $(".modal_area").removeClass("active");
+    });
+
+    /* ================== Header Submenu Click ================== */
+    $("nav.main_menu ul li.has-submenu > a").on("click", function(e) {
+        e.preventDefault();
+        var $submenu = $(this).siblings(".submenu");
+        $(".submenu").not($submenu).slideUp();
+        $submenu.slideToggle();
+    });
+
+    /* ================== Sticky Header ================== */
+    var header = $(".header_bottom");
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            header.addClass("sticky");
+        } else {
+            header.removeClass("sticky");
+        }
+    });
+
+})(jQuery);
