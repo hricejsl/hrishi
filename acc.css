@@ -687,3 +687,32 @@ ul {
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+
+/* ================= Tablet ================= */
+@media (max-width: 900px) {
+  .newsletter_black .newsletter_content form input {
+    padding: 12px 120px 12px 20px;
+  }
+  .newsletter_black .newsletter_content form button {
+    padding: 0 35px;
+  }
+}
+
+/* ================= Mobile ================= */
+@media (max-width: 600px) {
+  .newsletter_black .newsletter_content form {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+  .newsletter_black .newsletter_content form input {
+    padding: 12px 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .newsletter_black .newsletter_content form button {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    padding: 12px 0;
+  }
+}
