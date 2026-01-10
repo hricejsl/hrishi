@@ -39,6 +39,10 @@ body{
     max-width: 100%;
     min-height: 480px;
 }
+.header_middle
+.logo {
+    height:20px;
+    width:60px;
 
 .container p{
     font-size: 14px;
