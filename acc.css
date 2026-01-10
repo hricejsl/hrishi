@@ -28,6 +28,36 @@ body{
     flex-direction: column;
     height: 100vh;
 }
+.home_contact {
+  display: flex;
+}
+
+.contact_box {
+  padding-right: 25px;
+  margin-right: 25px;
+  border-right: 2px solid #cccccc;
+}
+.home_contact {
+  align-items: center;
+}
+.contact_box {
+  margin-left: 15px;
+}
+
+.contact_box p {
+  color: #a8741a;
+  font-size: 14px;
+}
+
+.logo {
+  padding: 0 20px;
+}
+
+.middel_right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 .container{
     background-color: #fff;
@@ -39,17 +69,6 @@ body{
     max-width: 100%;
     min-height: 480px;
 }
-.home_contact {
-    display: flex;
-    float: right;
-   }
-.logo {
-    display: flex;
-    float: left; 
-    border-radius: 4px;
-    height:20px;
-    width:60px;
-    }
 
 .container p{
     font-size: 14px;
