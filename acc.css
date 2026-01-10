@@ -40,11 +40,12 @@ body{
     min-height: 480px;
 }
 .home_contact {
-float: right;
-}
+    display: flex;
+    float: right;
+   }
 .logo {
-    float: left;
-    border: 1px solid transparent; 
+    display: flex;
+    float: left; 
     border-radius: 4px;
     height:20px;
     width:60px;
