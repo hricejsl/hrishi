@@ -4,6 +4,7 @@
 }
 
 html, body {
+    background-color: black;
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -20,7 +21,7 @@ html, body {
 }
 
 body{
-    background-color: #c9d6ff;
+    background-color: black;
     background: linear-gradient(to right, #e2e2e2, #c9d6ff);
     display: flex;
     align-items: center;
@@ -399,7 +400,7 @@ body{
 
 
 .container{
-    background-color: #fff;
+    background-color: #2f2f2f;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
