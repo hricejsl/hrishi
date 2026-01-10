@@ -30,16 +30,6 @@ body{
 }
 
 /* *****************Middle Header******************** */
-
-.header_middel {
-  padding: 40px 0;
-  border-bottom: 1px solid #ebebeb;
-}
-
-.header_black .header_middel {
-  border-bottom: 1px solid #2d2d2d;
-}
-
 .home_contact {
   display: flex;
 }
@@ -49,14 +39,14 @@ body{
   margin-right: 25px;
   border-right: 2px solid #cccccc;
 }
-.header_black .home_contact {
+.home_contact {
   align-items: center;
 }
-.header_black .contact_box {
+.contact_box {
   margin-left: 15px;
 }
 
-.header_black .contact_box p {
+.contact_box p {
   color: #a8741a;
   font-size: 14px;
 }
@@ -95,7 +85,7 @@ body{
 .search_btn a:hover {
   color: #a8741a;
 }
-.header_black .search_btn form button {
+.search_btn form button {
   position: absolute;
   top: 0;
   right: 10px;
@@ -106,7 +96,7 @@ body{
   height: 100%;
 }
 
-.header_black .search_btn form button:hover {
+ .search_btn form button:hover {
   color: #a8741a;
 }
 
@@ -118,7 +108,6 @@ body{
   top: 120%;
   transition: 0.3s;
 }
-
 .dropdown_search form {
   position: relative;
   width: 280px;
@@ -152,16 +141,16 @@ body{
   color: #ffffff;
 }
 
-.header_black .dropdown_search form {
+ .dropdown_search form {
   background: #242424;
   border: 1px solid #2d2d2d;
 }
 
-.header_black .wishlist_btn {
+ .wishlist_btn {
   margin-left: 18px;
 }
 
-.header_black .wishlist_btn a {
+ .wishlist_btn a {
   width: 45px;
   height: 45px;
   border-radius: 3px;
@@ -173,7 +162,7 @@ body{
   color: #ffffff;
 }
 
-.header_black .wishlist_btn a:hover {
+ .wishlist_btn a:hover {
   color: #a8741a;
 }
 
@@ -222,20 +211,20 @@ body{
   font-size: 17px;
   margin-left: 3px;
 }
-.header_black .cart_link span.cart_quantity {
+ .cart_link span.cart_quantity {
   background: #a8741a;
 }
 
-.header_black .cart_link > a {
+ .cart_link > a {
   color: #ffffff;
   border: 1px solid #2d2d2d;
 }
 
-.header_black .cart_link > a:hover {
+ .cart_link > a:hover {
   color: #a8741a;
 }
 
-.header_black .cart_link > a i.ion-android-cart {
+ .cart_link > a i.ion-android-cart {
   border-right: 1px solid #2d2d2d;
 }
 
