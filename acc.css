@@ -29,6 +29,8 @@ html, body {
 .logo{
     display: flex;
     padding: 2px;
+    width:200px
+    height:60px;
 }
 .container{
     background-color: #fff;
