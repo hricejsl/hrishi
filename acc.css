@@ -51,13 +51,10 @@ body{
 
 .logo {
   display: flex;
-  overflow: hidden; 
-}
-
-.middel_right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  margin: 5px;
+  padding: 2px;
+  height: 20px;
+  width: 60px;
 }
 
 .container{
