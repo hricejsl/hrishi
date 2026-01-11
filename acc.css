@@ -23,7 +23,8 @@ html, body {
     background-color: #fff;
     display: flex;
     align-items: center;
-    height: 30px;
+    justify-content: center;
+    height: 60px;
     }
 .logo{
     display: flex;
