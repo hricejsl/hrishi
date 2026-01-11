@@ -21,6 +21,9 @@ html, body {
 }
 .logo {
     display: flex;
+    width: 30%;
+    hight: 20px;
+    margin: 0px;
 }
 .container{
     background-color: #fff;
