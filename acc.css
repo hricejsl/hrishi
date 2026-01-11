@@ -19,13 +19,13 @@ html, body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-.logo-container {
+.logo-container{
     background-color: #fff;
     display: flex;
     align-items: center;
     height: 15px;
     }
-.logo {
+.logo{
     display: flex;
 }
 .container{
