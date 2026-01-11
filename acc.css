@@ -22,13 +22,11 @@ html, body {
 .logo-container{
     background-color: #black;
     display: flex;
-    align-items: center;
-    justify-content: center;
     height: 80px;
     }
 .logo-container a{
         width: 120px;
-        height: 30px;
+        height: 40px;
         }
         
 .container{
