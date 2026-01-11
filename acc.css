@@ -19,10 +19,18 @@ html, body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+.logo-container {
+    background-color: #black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 20px;
+    }
 .logo {
     display: flex;
-    width: 30%;
-    hight: 20px;
+    width: 80px;
+    hight: 16px;
     margin: 0px;
     padding: 0px;
 }
