@@ -21,6 +21,7 @@ html, body {
 }
 
 .logo{
+    padding: 5px;
     width: 120px;
     height: 40px;
     }
