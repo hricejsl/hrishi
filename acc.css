@@ -27,6 +27,7 @@ html, body {
     height: 80px;
     }
 .logo{
+    background-color: darkblue;
     display: flex;
     height:40px;
     width:200px;
