@@ -22,12 +22,20 @@ html, body {
 .logo-container{
     background-color: #black;
     display: flex;
+    width: 150px;
     height: 80px;
+    padding: 2px;
+    margin: 0px 20px; 
     }
 .logo-container a{
-        width: 120px;
-        height: 40px;
-        }
+    width: 120px;
+    height: 40px;
+    }
+.logo {
+    width: 120px;
+    height: 40px;
+    }
+   
         
 .container{
     background-color: #fff;
