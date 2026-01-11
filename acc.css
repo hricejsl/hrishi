@@ -24,15 +24,10 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    height: 20px;
+    height: 15px;
     }
 .logo {
     display: flex;
-    width: 80px;
-    hight: 16px;
-    margin: 0px;
-    padding: 0px;
 }
 .container{
     background-color: #fff;
@@ -43,6 +38,7 @@ html, body {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    margin: 10px; 
 }
 
 .container p{
