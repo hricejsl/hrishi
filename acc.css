@@ -29,13 +29,8 @@ body{
     height: 100vh;
 }
 .logo {
-  display: flex;
-  margin: 0px;
-  padding: 0px;
-  height: 10px;
-  width: 50px;
+    display: flex;
 }
-
 .container{
     background-color: #fff;
     border-radius: 30px;
