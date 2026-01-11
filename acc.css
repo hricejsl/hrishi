@@ -20,7 +20,7 @@ html, body {
     font-family: 'Montserrat', sans-serif;
 }
 .logo-container{
-    background-color: #black;
+    background-color: #fff;
     display: flex;
     width: 150px;
     height: 80px;
