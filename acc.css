@@ -26,12 +26,11 @@ html, body {
     justify-content: center;
     height: 80px;
     }
-.logo{
-    background-color: darkblue;
-    display: flex;
-    height:40px;
-    width:200px;
-}
+.logo-container a{
+        width: 150px;
+        height: 60px;
+        }
+        
 .container{
     background-color: #fff;
     border-radius: 30px;
