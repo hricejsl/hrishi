@@ -24,10 +24,11 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px;
+    height: 80px;
     }
 .logo{
     display: flex;
+    padding: 2px;
 }
 .container{
     background-color: #fff;
