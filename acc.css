@@ -27,14 +27,15 @@ html, body {
     padding: 2px;
     margin: 0px 20px; 
     }
+.logo{
+    width: 120px;
+    height: 40px;
+    }
 .logo-container a{
     width: 120px;
     height: 40px;
     }
-.logo {
-    width: 120px;
-    height: 40px;
-    }
+
    
         
 .container{
