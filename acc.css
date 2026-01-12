@@ -19,60 +19,27 @@ html, body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-body{
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+/* Ensure the header uses full body width */
+header {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    height: 100vh;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
+    justify-content: center; /* Center horizontally */
+    padding: 10px; /* Add spacing */
 }
 
-.logo img {
-  height: 40px;
+/* Style the logo */
+header .logo img {
+    width: 150px; /* Replace with desired width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center on the page */
 }
 
-.hamburger-menu {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
+@media only screen and (max-width: 600px) {
+    header .logo img {
+        width: 100px; /* Smaller width for smaller screens */
+    }
 }
-
-.hamburger-menu span {
-  background: #fff;
-  height: 3px;
-  width: 25px;
-  margin: 4px 0;
-}
-
-.nav-links {
-  display: none;
-}
-
-.nav-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-links li {
-  margin: 10px 0;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #fff;
-}
-
 /* ================= Tablet ================= */
 @media (max-width: 900px) {
   .newsletter_black .newsletter_content form input {
