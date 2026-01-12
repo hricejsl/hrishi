@@ -1,10 +1,23 @@
+/* Google font import must be at the top */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 /* ==== GLOBAL LAYOUT FIX ==== */
+/* CSS variables */
+:root {
+    --header-height: 64px; /* adjust if you want a taller/shorter header */
+}
+
+/* Reset + defaults */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 html, body {
     background: black;
+    color: #fff;
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -12,59 +25,47 @@ html, body {
     overflow-x: hidden;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-/* Ensure the header uses full body width */
+/* ---- Header: fixed to top and full-width ---- */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
+    height: var(--header-height);
     display: flex;
     align-items: center;
-    justify-content: center; /* Center horizontally */
-    padding: 10px; /* Add spacing */
+    justify-content: center; /* center horizontally; change to flex-start to left-align */
+    padding: 0 20px; /* horizontal space inside header */
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.4); /* translucent background so header sits above content */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
 }
 
-/* Style the logo */
+/* Prevent page content from being hidden under the fixed header */
+body {
+    padding-top: var(--header-height);
+}
+
+/* Logo styling */
 header .logo img {
-    width: 150px; /* Replace with desired width */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 auto; /* Center on the page */
-}
-
-@media only screen and (max-width: 600px) {
-    header .logo img {
-        width: 100px; /* Smaller width for smaller screens */
-    }
-}
-/* ================= Tablet ================= */
-@media (max-width: 900px) {
-  .newsletter_black .newsletter_content form input {
-    padding: 12px 120px 12px 20px;
-  }
-  .newsletter_black .newsletter_content form button {
-    padding: 0 35px;
-  }
+    width: 150px; /* desktop size */
+    height: auto;
+    display: block;
 }
 
 /* ================= Mobile ================= */
 @media (max-width: 600px) {
-  .newsletter_black .newsletter_content form {
-    flex-direction: column;
-    border-radius: 20px;
+  /* reduce header height on small screens */
+  :root {
+    --header-height: 56px;
   }
-  .newsletter_black .newsletter_content form input {
-    padding: 12px 20px;
-    border-radius: 20px;
-    margin-bottom: 10px;
+
+  header {
+    padding: 0 12px;
   }
-  .newsletter_black .newsletter_content form button {
-    position: relative;
-    width: 100%;
-    border-radius: 20px;
-    padding: 12px 0;
+
+  header .logo img {
+    width: 100px; /* smaller logo for phones */
   }
-}
