@@ -1,28 +1,20 @@
-/* Google font import */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-/* ==== GLOBAL LAYOUT FIX ==== */
-/* CSS variables */
-
-/* Reset + defaults */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  -webkit-font-smoothing: antialiased; /* smoother fonts in WebKit */
-  -moz-osx-font-smoothing: grayscale;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
-html, body {
-  background: black;
-  color: #fff;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
+body{
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .container{
@@ -169,7 +161,7 @@ html, body {
 }
 
 .toggle{
-    background-color: #2f2f2f;
+    background-color: #512da8;
     height: 100%;
     background: linear-gradient(to right, #5c6bc0, #512da8);
     color: #fff;
@@ -215,62 +207,4 @@ html, body {
 
 .container.active .toggle-right{
     transform: translateX(200%);
-}
-
-/* Mobile: on small screens use sticky if you see weird fixed behavior in Safari (address-bar hiding issues) */
-@media (max-width: 700px) {
-  header {
-    /* position: sticky is sometimes more reliable on iOS Safari than fixed during
-       address-bar show/hide interactions. If you prefer always-fixed, remove this
-       block and keep position: fixed above. */
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
-    padding: 0 12px;
-    justify-content: center;
-  }
-
-  :root {
-    --header-height: 56px;
-  }
-
-  header .logo img {
-    width: 100px;
-  }
-}
-
-/* Accessibility / interaction improvements */
-header a, header button {
-  -webkit-tap-highlight-color: rgba(255,255,255,0.08);
-  touch-action: manipulation;
-}
-
-/* ================= Tablet ================= */
-@media (max-width: 900px) {
-  .newsletter_black .newsletter_content form input {
-    padding: 12px 120px 12px 20px;
-  }
-  .newsletter_black .newsletter_content form button {
-    padding: 0 35px;
-  }
-}
-
-/* ================= Mobile ================= */
-@media (max-width: 600px) {
-  .newsletter_black .newsletter_content form {
-    flex-direction: column;
-    border-radius: 20px;
-  }
-  .newsletter_black .newsletter_content form input {
-    padding: 12px 20px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-  }
-  .newsletter_black .newsletter_content form button {
-    position: relative;
-    width: 100%;
-    border-radius: 20px;
-    padding: 12px 0;
-  }
 }
