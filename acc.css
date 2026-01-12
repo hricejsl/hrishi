@@ -3,9 +3,6 @@
 
 /* ==== GLOBAL LAYOUT FIX ==== */
 /* CSS variables */
-:root {
-  --header-height: 64px; /* adjust if you want a taller/shorter header */
-}
 
 /* Reset + defaults */
 * {
