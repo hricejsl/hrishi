@@ -22,7 +22,12 @@ html, body {
     background: white;
     width:120px;
     height:40px;
-    }
+}
+.logo{
+    width:100px;
+    height:30px;
+    padding:2px;
+}
 
 /* ================= Tablet ================= */
 @media (max-width: 900px) {
