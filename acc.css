@@ -1,18 +1,21 @@
+/* ==== GLOBAL LAYOUT FIX ==== */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    background: black;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-}
-
-body{
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    height: 100vh;
 }
 .logo-container{
     display:flex;
