@@ -28,41 +28,6 @@ html, body {
   -webkit-text-size-adjust: 100%;
 }
 
-/* ---- Header: full-width, fixed on desktop, sticky fallback on some mobile Safari ---- */
-/* Use safe-area-inset for notches (iOS) */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
-  display: flex;
-  align-items: center;
-  justify-content: center; /* change to flex-start to left-align logo */
-  padding: 0 20px;
-  padding-top: env(safe-area-inset-top, 0px);
-  z-index: 9999;
-  background: rgba(0,0,0,0.45); /* fallback background color */
-  -webkit-backdrop-filter: blur(6px); /* Safari */
-  backdrop-filter: blur(6px);         /* modern browsers */
-  -webkit-transform: translateZ(0);   /* promote to its own layer */
-  -webkit-backface-visibility: hidden;
-}
-
-/* Prevent page content from being hidden under the fixed header */
-body {
-  padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
-}
-
-/* Logo styling */
-header .logo img {
-  width: 150px; /* desktop size */
-  height: auto;
-  display: block;
-  margin: 0;
-}
-
 .container{
     background-color: #fff;
     border-radius: 30px;
