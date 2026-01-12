@@ -9,3 +9,10 @@ registerBtn.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
+
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const navLinks = document.getElementById('nav-links');
+
+hamburgerMenu.addEventListener('click', () => {
+  navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+});
