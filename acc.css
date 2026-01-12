@@ -16,8 +16,10 @@ html, body {
 {
     
 .logo-container{
-    width: 120px;
-    height: 40px;
+    display:flex;
+    background:#fff;
+    width:120px;
+    height:40px;
     }
 
 /* ================= Tablet ================= */
