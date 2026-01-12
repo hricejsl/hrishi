@@ -14,7 +14,7 @@ body{
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    height: auto;
 }
 /* Reset body margin and padding */
 body {
@@ -25,7 +25,7 @@ body {
 /* Adjust the logo's margin */
 .logo {
     display: block; /* Ensures proper spacing */
-    margin: 0 auto; /* Centers the logo horizontally */
+    margin: 10px auto; /* Centers the logo horizontally */
     padding: 10px 0; /* Adjust padding as needed */
 }
 
