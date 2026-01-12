@@ -1,71 +1,122 @@
-/* Google font import must be at the top */
+/* Google font import */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 /* ==== GLOBAL LAYOUT FIX ==== */
 /* CSS variables */
 :root {
-    --header-height: 64px; /* adjust if you want a taller/shorter header */
+  --header-height: 64px; /* adjust if you want a taller/shorter header */
 }
 
 /* Reset + defaults */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased; /* smoother fonts in WebKit */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html, body {
-    background: black;
-    color: #fff;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  background: black;
+  color: #fff;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* ---- Header: fixed to top and full-width ---- */
+/* ---- Header: full-width, fixed on desktop, sticky fallback on some mobile Safari ---- */
+/* Use safe-area-inset for notches (iOS) */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: center; /* center horizontally; change to flex-start to left-align */
-    padding: 0 20px; /* horizontal space inside header */
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.4); /* translucent background so header sits above content */
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: center; /* change to flex-start to left-align logo */
+  padding: 0 20px;
+  padding-top: env(safe-area-inset-top, 0px);
+  z-index: 9999;
+  background: rgba(0,0,0,0.45); /* fallback background color */
+  -webkit-backdrop-filter: blur(6px); /* Safari */
+  backdrop-filter: blur(6px);         /* modern browsers */
+  -webkit-transform: translateZ(0);   /* promote to its own layer */
+  -webkit-backface-visibility: hidden;
 }
 
 /* Prevent page content from being hidden under the fixed header */
 body {
-    padding-top: var(--header-height);
+  padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
 }
 
 /* Logo styling */
 header .logo img {
-    width: 150px; /* desktop size */
-    height: auto;
-    display: block;
+  width: 150px; /* desktop size */
+  height: auto;
+  display: block;
+  margin: 0;
 }
 
-/* ================= Mobile ================= */
-@media (max-width: 600px) {
-  /* reduce header height on small screens */
+/* Mobile: on small screens use sticky if you see weird fixed behavior in Safari (address-bar hiding issues) */
+@media (max-width: 700px) {
+  header {
+    /* position: sticky is sometimes more reliable on iOS Safari than fixed during
+       address-bar show/hide interactions. If you prefer always-fixed, remove this
+       block and keep position: fixed above. */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+    padding: 0 12px;
+    justify-content: center;
+  }
+
   :root {
     --header-height: 56px;
   }
 
-  header {
-    padding: 0 12px;
-  }
-
   header .logo img {
-    width: 100px; /* smaller logo for phones */
+    width: 100px;
   }
+}
+
+/* Accessibility / interaction improvements */
+header a, header button {
+  -webkit-tap-highlight-color: rgba(255,255,255,0.08);
+  touch-action: manipulation;
+}
+
+/* ================= Tablet ================= */
+@media (max-width: 900px) {
+  .newsletter_black .newsletter_content form input {
+    padding: 12px 120px 12px 20px;
+  }
+  .newsletter_black .newsletter_content form button {
+    padding: 0 35px;
+  }
+}
+
+/* ================= Mobile ================= */
+@media (max-width: 600px) {
+  .newsletter_black .newsletter_content form {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+  .newsletter_black .newsletter_content form input {
+    padding: 12px 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .newsletter_black .newsletter_content form button {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    padding: 12px 0;
+  }
+}
